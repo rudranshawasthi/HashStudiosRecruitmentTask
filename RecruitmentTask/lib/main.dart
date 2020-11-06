@@ -25,57 +25,77 @@ class _MyAppState extends State<MyApp> {
       backgroundColor: Color(0xFFC4C4C4),
       body: SafeArea(
         child: Container(
+          margin: EdgeInsets.only(top: 20),
           padding: EdgeInsets.all(10),
           child: SizedBox.expand(
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(
-                  height: 40,
-                ),
-                Text(
-                  "Wallpaper",
-                  style: TextStyle(fontSize: 24, color: Colors.white),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Container(
-                  height: MediaQuery.of(context).size.height - 300,
-                  width: MediaQuery.of(context).size.width - 120,
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: NetworkImage(imgList[_current]),
-                        fit: BoxFit.fill,
-                      ),
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(20),
-                      )),
-                ),
-                SizedBox(
-                  height: 70,
-                ),
-                Container(
-                  margin: EdgeInsets.symmetric(vertical: 10),
-                  height: 60,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) {
-                      final img = imgList[index];
-                      print(img);
-                      return ImgBox(
-                        imglist: imgList,
-                        index: index,
-                        onclicCallback: () {
-                          setState(() {
-                            _current = index;
-                          });
-                        },
-                      );
-                    },
-                    itemCount: imgList.length,
+                Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+                  Text(
+                    "Wallpaper",
+                    style: TextStyle(fontSize: 24, color: Colors.white),
                   ),
-                )
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Container(
+                    height: MediaQuery.of(context).size.height - 280,
+                    width: MediaQuery.of(context).size.width - 150,
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: NetworkImage(imgList[_current]),
+                          fit: BoxFit.fill,
+                        ),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(20),
+                        )),
+                  ),
+                ]),
+                // SizedBox(
+                //   height: 70,
+                // ),
+                Column(children: [
+                  Container(
+                    margin: EdgeInsets.symmetric(vertical: 10),
+                    height: 60,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        final img = imgList[index];
+                        print(img);
+                        return ImgBox(
+                          imglist: imgList,
+                          index: index,
+                          onclicCallback: () {
+                            setState(() {
+                              _current = index;
+                            });
+                          },
+                        );
+                      },
+                      itemCount: imgList.length,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    decoration: BoxDecoration(
+                        color: Color(0xff9F9F9F),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(30),
+                        )),
+                    child: FlatButton(
+                        child: Text(
+                          'Set on Lock Screen',
+                          style: TextStyle(color: Colors.white, fontSize: 16),
+                        ),
+                        onPressed: () {}),
+                  ),
+                ])
               ],
             ),
           ),
