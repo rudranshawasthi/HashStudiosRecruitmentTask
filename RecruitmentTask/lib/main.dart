@@ -35,18 +35,21 @@ class _MyAppState extends State<MyApp> {
                 Column(mainAxisAlignment: MainAxisAlignment.start, children: [
                   Text(
                     "Wallpaper",
-                    style: TextStyle(fontSize: 24, color: Colors.white),
+                    style: TextStyle(
+                        fontSize: 24,
+                        color: Colors.white,
+                        fontFamily: 'Roboto'),
                   ),
                   SizedBox(
                     height: 10,
                   ),
                   Container(
-                    height: MediaQuery.of(context).size.height - 280,
-                    width: MediaQuery.of(context).size.width - 150,
+                    height: 450,
+                    width: 208,
                     decoration: BoxDecoration(
                         image: DecorationImage(
                           image: NetworkImage(imgList[_current]),
-                          fit: BoxFit.fill,
+                          fit: BoxFit.cover,
                         ),
                         borderRadius: BorderRadius.all(
                           Radius.circular(20),
@@ -82,6 +85,8 @@ class _MyAppState extends State<MyApp> {
                     height: 10,
                   ),
                   Container(
+                    height: 39,
+                    width: 214,
                     padding: EdgeInsets.symmetric(horizontal: 20),
                     decoration: BoxDecoration(
                         color: Color(0xff9F9F9F),

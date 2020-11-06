@@ -19,7 +19,7 @@ class ImgBox extends StatelessWidget {
               fit: BoxFit.fill,
             ),
             borderRadius: BorderRadius.all(
-              Radius.circular(20),
+              Radius.circular(10),
             )),
       ),
     );
